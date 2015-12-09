@@ -81,6 +81,7 @@
             this.lblBed = new System.Windows.Forms.Label();
             this.tipThresholds = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
+            this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.gbxThresholds.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -153,31 +154,31 @@
             // 
             this.heartRate.AutoSize = true;
             this.heartRate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heartRate.Location = new System.Drawing.Point(41, 70);
+            this.heartRate.Location = new System.Drawing.Point(52, 70);
             this.heartRate.Name = "heartRate";
-            this.heartRate.Size = new System.Drawing.Size(35, 18);
+            this.heartRate.Size = new System.Drawing.Size(23, 18);
             this.heartRate.TabIndex = 1;
-            this.heartRate.Text = "100";
+            this.heartRate.Text = "---";
             // 
             // breathingRate
             // 
             this.breathingRate.AutoSize = true;
             this.breathingRate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breathingRate.Location = new System.Drawing.Point(349, 70);
+            this.breathingRate.Location = new System.Drawing.Point(361, 70);
             this.breathingRate.Name = "breathingRate";
-            this.breathingRate.Size = new System.Drawing.Size(35, 18);
+            this.breathingRate.Size = new System.Drawing.Size(23, 18);
             this.breathingRate.TabIndex = 1;
-            this.breathingRate.Text = "100";
+            this.breathingRate.Text = "---";
             // 
             // bloodPressure
             // 
             this.bloodPressure.AutoSize = true;
             this.bloodPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bloodPressure.Location = new System.Drawing.Point(98, 153);
+            this.bloodPressure.Location = new System.Drawing.Point(105, 153);
             this.bloodPressure.Name = "bloodPressure";
-            this.bloodPressure.Size = new System.Drawing.Size(35, 18);
+            this.bloodPressure.Size = new System.Drawing.Size(23, 18);
             this.bloodPressure.TabIndex = 1;
-            this.bloodPressure.Text = "100";
+            this.bloodPressure.Text = "---";
             // 
             // temperature
             // 
@@ -185,9 +186,9 @@
             this.temperature.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.temperature.Location = new System.Drawing.Point(204, 70);
             this.temperature.Name = "temperature";
-            this.temperature.Size = new System.Drawing.Size(35, 18);
+            this.temperature.Size = new System.Drawing.Size(23, 18);
             this.temperature.TabIndex = 1;
-            this.temperature.Text = "100";
+            this.temperature.Text = "---";
             // 
             // cbxBed
             // 
@@ -204,6 +205,7 @@
             "Bed 8",
             "Bed 9"});
             this.cbxBed.Location = new System.Drawing.Point(52, 12);
+            this.cbxBed.MaxDropDownItems = 10;
             this.cbxBed.Name = "cbxBed";
             this.cbxBed.Size = new System.Drawing.Size(121, 21);
             this.cbxBed.TabIndex = 4;
@@ -621,11 +623,11 @@
             // 
             this.lblDiaPressure.AutoSize = true;
             this.lblDiaPressure.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiaPressure.Location = new System.Drawing.Point(286, 153);
+            this.lblDiaPressure.Location = new System.Drawing.Point(303, 153);
             this.lblDiaPressure.Name = "lblDiaPressure";
-            this.lblDiaPressure.Size = new System.Drawing.Size(35, 18);
+            this.lblDiaPressure.Size = new System.Drawing.Size(23, 18);
             this.lblDiaPressure.TabIndex = 3;
-            this.lblDiaPressure.Text = "100";
+            this.lblDiaPressure.Text = "---";
             // 
             // label5
             // 
@@ -656,6 +658,12 @@
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Enabled = true;
+            this.timerRefresh.Interval = 1000;
+            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
             // Monitor
             // 
@@ -750,5 +758,6 @@
         private System.Windows.Forms.TrackBar tbrBRMax;
         private System.Windows.Forms.Label lblDiaPressure;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer timerRefresh;
     }
 }
